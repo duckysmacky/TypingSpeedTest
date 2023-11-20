@@ -19,10 +19,7 @@ public class Window extends Frame {
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         label.setBorder(border);
 
-        while (true) {
-            render();
-        }
-
+        render();
     }
 
     private void render() {
