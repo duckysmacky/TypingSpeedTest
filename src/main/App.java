@@ -1,7 +1,7 @@
 package main;
 
 public class App {
-    private Window window;
+    private final Window window;
 
     public App() {
 
@@ -11,7 +11,11 @@ public class App {
 
     public static void main(String[] args) {
 
-        App app = new App();
+        new App();
 
+    }
+
+    public Window getWindow() {
+        return this.window;
     }
 }
