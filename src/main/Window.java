@@ -39,11 +39,13 @@ public class Window {
         // Window Style
         window.setTitle("Typing Speed Test");
         window.getContentPane().setBackground(backgroundColor);
-        window.setLayout(new BorderLayout());
+        window.setLayout(null);
         window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        setUndecorated(true);
 //        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 15, 15));
+
+
 
         // Title Panel
         JPanel head = new JPanel(new BorderLayout());
@@ -57,31 +59,65 @@ public class Window {
         heading.setForeground(mainColor);
 
         // Title label
-        JLabel subHeading = new JLabel("This simple app allows you to test your typing speed. Made by Ducky", SwingConstants.CENTER);
+        JLabel subHeading = new JLabel("This simple app allows you to test your typing speed", SwingConstants.CENTER);
         subHeading.setFont(subHeading2);
         subHeading.setForeground(accentColor2);
 
+
+
         // Body Panel
         JPanel body = new JPanel(new BorderLayout());
-        head.setBounds(w / 8, h / 32, w / 2 + w / 4, h / 16 + h / 16);
-        head.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
-        head.setBackground(foregroundColor1);
+        body.setBounds(w / 8, h / 32 + h / 6, w / 2 + w / 4, h / 2 + h / 8);
+        body.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
+        body.setBackground(foregroundColor1);
 
-        // TextBox Panel
-        JPanel textBox = new JPanel(new BorderLayout());
-        head.setBorder(BorderFactory.createEmptyBorder(16,16,16,16));
-        textBox.setBackground(foregroundColor1);
 
-        // Add to panels
+        // TypeBox Panel
+        JPanel typeBox = new JPanel(new BorderLayout());
+        typeBox.setBorder(BorderFactory.createEmptyBorder(16,16,16,16));
+        typeBox.setBackground(foregroundColor1);
+
+
+        // Stats Panel
+        JPanel statsPanel = new JPanel(new BorderLayout());
+        statsPanel.setBorder(BorderFactory.createEmptyBorder(0,0,8,0));
+        statsPanel.setBackground(foregroundColor1);
+
+        // Stat 1
+        JLabel stat1 = new JLabel("Stat1: 0000", SwingConstants.CENTER);
+        stat1.setFont(subHeading2);
+        stat1.setForeground(accentColor2);
+
+        // Stat 2
+        JLabel stat2 = new JLabel("Stat2: 0000", SwingConstants.CENTER);
+        stat2.setFont(subHeading2);
+        stat2.setForeground(accentColor2);
+
+
+        // Text Field
+        JTextField textField = new JTextField();
+
+
+
+
+        // Add to head
         head.add(heading, BorderLayout.CENTER);
         head.add(subHeading, BorderLayout.SOUTH);
 
-        textBox.add(new JLabel("Text text text"), BorderLayout.NORTH);
-        body.add(textBox, BorderLayout.SOUTH);
+        // Add to Stats Panel
+        statsPanel.add(stat1, BorderLayout.WEST);
+        statsPanel.add(stat2, BorderLayout.EAST);
+
+        // Add to TypeBox Panel
+        typeBox.add(statsPanel, BorderLayout.NORTH);
+        typeBox.add(textField, BorderLayout.CENTER);
+
+        // Add to Body Panel
+        body.add(typeBox, BorderLayout.CENTER);
 
         // Add to window
-        window.add(head, BorderLayout.NORTH);
-        window.add(body, BorderLayout.SOUTH);
+        window.add(head);
+        window.add(body);
         window.setVisible(true);
     }
 
