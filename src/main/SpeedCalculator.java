@@ -13,6 +13,7 @@ public class SpeedCalculator {
 
     public double calculateSpeed() {
         String text = textField.getText().replace("\t", "");
-        return time;
+        double speed = (text.length() / 5) / time * 100;
+        return Math.round(speed * 100.0) / 100.0;
     }
 }
