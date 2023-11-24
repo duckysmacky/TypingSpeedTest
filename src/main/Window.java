@@ -1,7 +1,5 @@
 package main;
 
-import org.w3c.dom.Text;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,6 +7,9 @@ public class Window {
     private final App app;
     private final JFrame window;
     private Dimension size = new Dimension(1024, 1024);
+
+    private JLabel wpm;
+    private JLabel timePassed;
 
     private final Font heading1 = new Font("Helvetica", Font.BOLD, 48);
     private final Font heading2 = new Font("Helvetica", Font.PLAIN, 36);
@@ -27,6 +28,7 @@ public class Window {
         this.app = app;
 
         initWindow();
+        renderStats();
     }
 
     private void initWindow() {
@@ -85,15 +87,15 @@ public class Window {
         statsPanel.setBorder(BorderFactory.createEmptyBorder(0,0,16,0));
         statsPanel.setBackground(foregroundColor1);
 
-        // Stat 1
-        JLabel stat1 = new JLabel("Stat1: 0000", SwingConstants.CENTER);
-        stat1.setFont(subHeading2);
-        stat1.setForeground(accentColor2);
+        // Time Passed
+        timePassed = new JLabel("Time Passed: 0.00", SwingConstants.CENTER);
+        timePassed.setFont(subHeading2);
+        timePassed.setForeground(accentColor2);
 
-        // Stat 2
-        JLabel stat2 = new JLabel("Stat2: 0000", SwingConstants.CENTER);
-        stat2.setFont(subHeading2);
-        stat2.setForeground(accentColor2);
+        // Time Passed
+        wpm = new JLabel("00.00 Words per Minute", SwingConstants.CENTER);
+        wpm.setFont(subHeading2);
+        wpm.setForeground(accentColor2);
 
 
         // Text Field
@@ -101,14 +103,17 @@ public class Window {
         textField.setFont(heading2);
         textField.setHorizontalAlignment(SwingConstants.LEFT);
         textField.setSize(new Dimension(200, 50));
+        textField.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
+        textField.setBackground(accentColor2);
         TextFieldListener textFieldListener = new TextFieldListener(textField);
 
         // Submit Button
         JButton bSubmit = new JButton("Submit");
         bSubmit.addActionListener(textFieldListener);
         bSubmit.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
+        bSubmit.setFont(heading2);
         bSubmit.setBackground(accentColor1);
-        bSubmit.setForeground(mainColor);
+        bSubmit.setForeground(foregroundColor1);
 
 
         // Add to head
@@ -116,8 +121,8 @@ public class Window {
         head.add(subHeading, BorderLayout.SOUTH);
 
         // Add to Stats Panel
-        statsPanel.add(stat1, BorderLayout.WEST);
-        statsPanel.add(stat2, BorderLayout.EAST);
+        statsPanel.add(timePassed, BorderLayout.WEST);
+        statsPanel.add(wpm, BorderLayout.EAST);
 
         // Add to TypeBox Panel
         typeBox.add(statsPanel, BorderLayout.NORTH);
@@ -131,6 +136,12 @@ public class Window {
         //window.add(head);
         window.add(body);
         window.setVisible(true);
+    }
+
+    private void renderStats() {
+        while (true) {
+            timePassed.setText("Time Passed: " + app.countTime());
+        }
     }
 
     private void calculateSize() {
