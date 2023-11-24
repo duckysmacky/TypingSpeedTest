@@ -1,5 +1,7 @@
 package main;
 
+import listeners.TextFieldListener;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -107,13 +109,13 @@ public class Window {
         textField.setBackground(accentColor2);
         TextFieldListener textFieldListener = new TextFieldListener(textField);
 
-        // Submit Button
-        JButton bSubmit = new JButton("Submit");
-        bSubmit.addActionListener(textFieldListener);
-        bSubmit.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
-        bSubmit.setFont(heading2);
-        bSubmit.setBackground(accentColor1);
-        bSubmit.setForeground(foregroundColor1);
+        // Start Button
+        JButton bStart = new JButton("Submit");
+        bStart.addActionListener(textFieldListener);
+        bStart.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
+        bStart.setFont(heading2);
+        bStart.setBackground(accentColor1);
+        bStart.setForeground(foregroundColor1);
 
 
         // Add to head
@@ -127,7 +129,7 @@ public class Window {
         // Add to TypeBox Panel
         typeBox.add(statsPanel, BorderLayout.NORTH);
         typeBox.add(textField, BorderLayout.CENTER);
-        typeBox.add(bSubmit, BorderLayout.SOUTH);
+        typeBox.add(bStart, BorderLayout.SOUTH);
 
         // Add to Body Panel
         body.add(typeBox, BorderLayout.CENTER);

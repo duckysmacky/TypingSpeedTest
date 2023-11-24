@@ -1,4 +1,4 @@
-package main;
+package listeners;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class TextFieldListener extends JTextField implements ActionListener {
     private final JTextField textField;
 
-    TextFieldListener(JTextField textField) {
+    public TextFieldListener(JTextField textField) {
         this.textField = textField;
 
         textField.getDocument().addDocumentListener(new DocumentListener() {

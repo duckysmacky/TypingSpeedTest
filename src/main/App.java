@@ -28,9 +28,9 @@ public class App {
             time = Math.round(time * 100.0) / 100.0;
             //System.out.println(time);
         }
-
         return time;
     }
 
+    public void setTime(double value) { time = value; }
     public Window getWindow() { return this.window; }
 }
