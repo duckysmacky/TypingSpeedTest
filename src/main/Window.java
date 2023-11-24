@@ -1,5 +1,7 @@
 package main;
 
+import org.w3c.dom.Text;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -80,7 +82,7 @@ public class Window {
 
         // Stats Panel
         JPanel statsPanel = new JPanel(new BorderLayout());
-        statsPanel.setBorder(BorderFactory.createEmptyBorder(0,0,8,0));
+        statsPanel.setBorder(BorderFactory.createEmptyBorder(0,0,16,0));
         statsPanel.setBackground(foregroundColor1);
 
         // Stat 1
@@ -95,9 +97,18 @@ public class Window {
 
 
         // Text Field
-        JTextField textField = new JTextField();
+        JTextField textField = new JTextField("enter text", 16);
+        textField.setFont(heading2);
+        textField.setHorizontalAlignment(SwingConstants.LEFT);
+        textField.setSize(new Dimension(200, 50));
+        TextFieldListener textFieldListener = new TextFieldListener(textField);
 
-
+        // Submit Button
+        JButton bSubmit = new JButton("Submit");
+        bSubmit.addActionListener(textFieldListener);
+        bSubmit.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
+        bSubmit.setBackground(accentColor1);
+        bSubmit.setForeground(mainColor);
 
 
         // Add to head
@@ -111,12 +122,13 @@ public class Window {
         // Add to TypeBox Panel
         typeBox.add(statsPanel, BorderLayout.NORTH);
         typeBox.add(textField, BorderLayout.CENTER);
+        typeBox.add(bSubmit, BorderLayout.SOUTH);
 
         // Add to Body Panel
         body.add(typeBox, BorderLayout.CENTER);
 
         // Add to window
-        window.add(head);
+        //window.add(head);
         window.add(body);
         window.setVisible(true);
     }
