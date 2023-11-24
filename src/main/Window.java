@@ -12,6 +12,7 @@ public class Window {
 
     private JLabel wpm;
     private JLabel timePassed;
+    private JTextField textField;
 
     private final Font heading1 = new Font("Helvetica", Font.BOLD, 48);
     private final Font heading2 = new Font("Helvetica", Font.PLAIN, 36);
@@ -101,7 +102,7 @@ public class Window {
 
 
         // Text Field
-        JTextField textField = new JTextField("enter text", 16);
+        textField = new JTextField("enter text", 16);
         textField.setFont(heading2);
         textField.setHorizontalAlignment(SwingConstants.LEFT);
         textField.setSize(new Dimension(200, 50));
@@ -143,6 +144,7 @@ public class Window {
     private void renderStats() {
         while (true) {
             timePassed.setText("Time Passed: " + app.countTime());
+            wpm.setText(new SpeedCalculator(textField, app.countTime()).calculateSpeed() + " WPM");
         }
     }
 

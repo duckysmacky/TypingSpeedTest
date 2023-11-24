@@ -11,8 +11,8 @@ public class SpeedCalculator {
         this.time = time;
     }
 
-    private double calculateSpeed() {
+    public double calculateSpeed() {
         String text = textField.getText().replace("\t", "");
-        return 0;
+        return time;
     }
 }
