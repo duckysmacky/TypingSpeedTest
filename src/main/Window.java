@@ -108,7 +108,7 @@ public class Window {
         textField.setSize(new Dimension(200, 50));
         textField.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
         textField.setBackground(accentColor2);
-        TextFieldListener textFieldListener = new TextFieldListener(textField);
+        TextFieldListener textFieldListener = new TextFieldListener(app, textField);
 
         // Start Button
         JButton bStart = new JButton("Submit");
@@ -144,7 +144,7 @@ public class Window {
     private void renderStats() {
         while (true) {
             timePassed.setText("Time Passed: " + app.countTime());
-            wpm.setText(new SpeedCalculator(textField, app.countTime()).calculateSpeed() + " WPM");
+            wpm.setText(new SpeedCalculator(app, textField, app.countTime()).calculateSpeed() + " WPM");
         }
     }
 
