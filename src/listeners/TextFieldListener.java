@@ -29,6 +29,7 @@ public class TextFieldListener extends JTextField implements ActionListener {
 
                 if (app.getState() == 0) {
 //                    textField.setText("");
+//                    textField.getDocument().remove(0, textField.getDocument().getLength());
                     app.setState(1);
                 } else if (app.getState() == 2) {
                     if (text != null && !text.isEmpty()) {

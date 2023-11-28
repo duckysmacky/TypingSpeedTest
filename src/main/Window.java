@@ -143,7 +143,7 @@ public class Window {
 
     private void renderStats() {
         while (true) {
-            timePassed.setText("Time Left: " + (30 - app.countTime()));
+            timePassed.setText("Time Left: " + Math.round((30 - app.countTime()) * 100.0) / 100.0);
             wpm.setText(new SpeedCalculator(app, textField, app.countTime()).calculateSpeed() + " WPM");
         }
     }
