@@ -34,9 +34,11 @@ public class App {
         }
         return time;
     }
+    // Setters and Getters
 
-    public void setTime(double value) { time = value; }
+    public void setTimeLeft(double value) { this.time = value; }
+    public void setState(int state) { this.state = state; }
+
     public Window getWindow() { return this.window; }
     public int getState() { return this.state; }
-    public void setState(int state) { this.state = state; }
 }

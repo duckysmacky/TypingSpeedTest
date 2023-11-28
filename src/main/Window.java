@@ -111,12 +111,12 @@ public class Window {
         TextFieldListener textFieldListener = new TextFieldListener(app, textField);
 
         // Start Button
-        JButton bStart = new JButton("Submit");
-        bStart.addActionListener(textFieldListener);
-        bStart.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
-        bStart.setFont(heading2);
-        bStart.setBackground(accentColor1);
-        bStart.setForeground(foregroundColor1);
+//        JButton bStart = new JButton("Submit");
+//        bStart.addActionListener(textFieldListener);
+//        bStart.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
+//        bStart.setFont(heading2);
+//        bStart.setBackground(accentColor1);
+//        bStart.setForeground(foregroundColor1);
 
 
         // Add to head
@@ -130,7 +130,7 @@ public class Window {
         // Add to TypeBox Panel
         typeBox.add(statsPanel, BorderLayout.NORTH);
         typeBox.add(textField, BorderLayout.CENTER);
-        typeBox.add(bStart, BorderLayout.SOUTH);
+//        typeBox.add(bStart, BorderLayout.SOUTH);
 
         // Add to Body Panel
         body.add(typeBox, BorderLayout.CENTER);
@@ -143,7 +143,7 @@ public class Window {
 
     private void renderStats() {
         while (true) {
-            timePassed.setText("Time Passed: " + app.countTime());
+            timePassed.setText("Time Left: " + (30 - app.countTime()));
             wpm.setText(new SpeedCalculator(app, textField, app.countTime()).calculateSpeed() + " WPM");
         }
     }
