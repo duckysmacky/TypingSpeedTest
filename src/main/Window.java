@@ -26,6 +26,8 @@ public class Window {
     private final Color mainColor = Color.decode("#6DA5C0");
     private final Color additionalColor = Color.decode("#294D61");
 
+    private String ghostText = "This is a test sentence. You have to write it.";
+
     public Window(App app) {
         window = new JFrame();
         this.app = app;
@@ -102,13 +104,14 @@ public class Window {
 
 
         // Text Field
-        textField = new JTextField("enter text", 16);
+        textField = new JTextField(ghostText, 16);
         textField.setFont(heading2);
         textField.setHorizontalAlignment(SwingConstants.LEFT);
         textField.setSize(new Dimension(200, 50));
         textField.setBorder(BorderFactory.createEmptyBorder(32,32,32,32));
         textField.setBackground(accentColor2);
-        TextFieldListener textFieldListener = new TextFieldListener(app, textField);
+        textField.setHighlighter(null);
+        TextFieldListener textFieldListener = new TextFieldListener(app, textField, ghostText);
 
         // Start Button
 //        JButton bStart = new JButton("Submit");
