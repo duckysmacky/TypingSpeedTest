@@ -128,7 +128,7 @@ public class Window {
 
         // Add to Stats Panel
         statsPanel.add(timePassed, BorderLayout.WEST);
-        statsPanel.add(wpm, BorderLayout.EAST);
+        //statsPanel.add(wpm, BorderLayout.EAST);
 
         // Add to TypeBox Panel
         typeBox.add(statsPanel, BorderLayout.NORTH);
@@ -146,8 +146,8 @@ public class Window {
 
     private void renderStats() {
         while (true) {
-            timePassed.setText("Time Left: " + Math.round((30 - app.countTime()) * 100.0) / 100.0);
-            wpm.setText(new SpeedCalculator(app, textField, app.countTime()).calculateSpeed() + " WPM");
+            timePassed.setText("Time Left: " + Math.round((30 - app.getTimer().countTime()) * 100.0) / 100.0);
+            //wpm.setText(new SpeedCalculator(app, textField, app.getTimer().countTime()).calculateSpeed() + " WPM");
         }
     }
 

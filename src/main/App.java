@@ -1,15 +1,14 @@
 package main;
 
 public class App {
+    private final Timer timer;
     private final Window window;
-    private double time = 0;
-    private long lastTime = 0;
     private int state;
 
     public App() {
 
-        window = new Window(this);
-        countTime();
+        this.timer = new Timer(this);
+        this.window = new Window(this);
         this.state = 0;
 
     }
@@ -22,23 +21,10 @@ public class App {
 
     }
 
-    public double countTime() {
-        if (state == 1) {
-            if (System.currentTimeMillis() - lastTime >= 10) {
-                lastTime = System.currentTimeMillis();
-                //System.out.println("Second passed: " + System.currentTimeMillis());
-                time += 0.01;
-                time = Math.round(time * 100.0) / 100.0;
-                //System.out.println(time);
-            }
-        }
-        return time;
-    }
     // Setters and Getters
-
-    public void setTimeLeft(double value) { this.time = value; }
     public void setState(int state) { this.state = state; }
 
+    public Timer getTimer() { return this.timer; }
     public Window getWindow() { return this.window; }
     public int getState() { return this.state; }
 }
